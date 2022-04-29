@@ -42,6 +42,7 @@ public class FormularioPersonagemActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
+        // recebe e atribui o item recebido através do metodo getItemID();
         int itemId = item.getItemId();
         if(itemId == R.id.activity_formulario_personagem_menu_salvar)
         {
@@ -63,10 +64,12 @@ public class FormularioPersonagemActivity extends AppCompatActivity
     //caso o usuário edite o personagem irá carregar um e se for registrar ele cria um novo personagem
     protected void carregaPersonagem()
     {
-        Intent dados = getIntent();
+        Intent dados = getIntent(); // a utilização dessa variável é o que será utilizado para determinar se há dados ou não dentro dele.
+                                    // com isso é possível determinar se há um personagem existente ou não.
+
         if(dados.hasExtra(CHAVE_PERSONAGEM))
         {
-            setTitle(TITULO_APPBAR_EDIT_PERSONAGEM);
+            setTitle(TITULO_APPBAR_EDIT_PERSONAGEM); // edita o que irá aparecerá no cabeçalho
             personagem = (Personagem) dados.getSerializableExtra(CHAVE_PERSONAGEM);
             preencheCampos();
         }
@@ -104,6 +107,7 @@ public class FormularioPersonagemActivity extends AppCompatActivity
     // referencia os campos no xml e coloca uma máscara para cada campo inputável pelo usuário.
     private void inicializarCampos()
     {
+        // pega a referência do texto inputado e atribui nas variaveis
         campoNome = findViewById(R.id.editText_nome);
         campoNascimento = findViewById(R.id.editText_nascimento);
         campoAltura = findViewById(R.id.editText_altura);
@@ -120,10 +124,11 @@ public class FormularioPersonagemActivity extends AppCompatActivity
     // atribui as variáveis inputadas pelo usuário no personagem.
     private void preencherPersonagem()
     {
+        // pega referencia dos campos inputados e preenche nas variaveis
         String nome = campoNome.getText().toString();
         String nascimento = campoNascimento.getText().toString();
         String altura = campoAltura.getText().toString();
-
+        // atribui as variaveis nos personagens, preenchendo eles.
         personagem.setNome(nome);
         personagem.setAltura(altura);
         personagem.setNascimento(nascimento);
