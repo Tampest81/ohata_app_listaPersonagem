@@ -86,14 +86,14 @@ public class ListaPersonagemActivity extends AppCompatActivity
     // atualiza os personagens da lista
     private void atualizaPersonagem()
     {
-        adapter.clear();
-        adapter.addAll(dao.todos());
+        adapter.clear(); // limpando o adapter pois ele fica com "sujeira" na memoria
+        adapter.addAll(dao.todos()); // adiciona os personagens na lista
     }
 
     // remove todos os personagens criados que estão na lista
     private void remove(Personagem personagem)
     {
-        dao.remove(personagem);
+        dao.remove(personagem); // limpa o personagem da lista
         adapter.remove(personagem);
     }
 
